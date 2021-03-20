@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +17,10 @@ public class FirstSeleniumTest {
         driver.manage().window().setSize(dimension);
         //driver.manage().window().maximize();
 
-        driver.get("http://www.google.com");
+        driver.get("C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\files\\Test.html");
+        driver.findElement(By.id("newPage")).click();
+        driver.close(); // metoda close zamyka pierwotne okno z focusem
+        //driver.quit(); //metoda quit zamyka wszystkie okna
     }
 
 }
