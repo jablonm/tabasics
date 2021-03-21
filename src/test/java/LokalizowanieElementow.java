@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class ElementLocalisation {
+public class LokalizowanieElementow {
 
     @Test
-    public void googleOpenTest() {
+    public void elementLocalistation() {
         String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",driverPath);
 

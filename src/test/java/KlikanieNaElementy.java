@@ -1,3 +1,4 @@
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,10 +7,10 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class ListElements {
+public class KlikanieNaElementy {
 
     @Test
-    public void googleOpenTest() {
+    public void clickOnMe() {
         String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", driverPath);
 
@@ -17,10 +18,15 @@ public class ListElements {
         driver.manage().window().maximize();
 
         driver.get("C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\files\\Test.html");
-        List<WebElement> links = driver.findElements(By.tagName("input"));
 
-        for (int i = 0; i < links.size(); i++) {
-            System.out.println("Element " + i + " to " + links.get(i));
-        }
+        WebElement clickOnMe = driver.findElement(By.id("clickOnMe"));
+        WebElement firstNameInput = driver.findElement(By.id("fname"));
+
+        clickOnMe.click();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        firstNameInput.sendKeys("Test");
+        firstNameInput.clear();
+        firstNameInput.sendKeys("Test2");
     }
 }
