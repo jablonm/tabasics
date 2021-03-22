@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class Example1GoogleTest {
 
     @Test
     public void googleTest() {
-        String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
+        String driverPath = new File("src/main/resources/executables/drivers/chromedriver.exe").getAbsolutePath();
 
         System.setProperty("webdriver.chrome.driver", driverPath);
 

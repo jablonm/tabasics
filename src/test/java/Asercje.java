@@ -6,18 +6,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Asercje {
 
-    @Test
-    public void assertionTest() {
-        String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
+    private WebDriver driver;
 
+    @BeforeTest
+    public void setUp() {
+        String driverPath = new File("src/main/resources/executables/drivers/chromedriver.exe").getAbsolutePath();
         System.setProperty("webdriver.chrome.driver", driverPath);
 
         //zgoda na cookie google
@@ -28,10 +30,13 @@ public class Asercje {
         options.setExperimentalOption("prefs", prefs);
         //koniec cookie
 
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get("https://www.google.com");
+    }
 
+    @Test
+    public void assertionTest() {
+        driver.get("https://www.google.com");
         WebElement searchInput = driver.findElement(By.name("q"));
         searchInput.sendKeys("Seleniumhq");
         searchInput.sendKeys(Keys.ENTER);
@@ -39,7 +44,7 @@ public class Asercje {
         //iterowanie po obiektach jakiegos typu na stronie
         List<WebElement> refList = driver.findElements(By.tagName("a"));
         WebElement seleniumLink = null;
-        Boolean linkExist = false;
+        boolean linkExist = false;
 
         for (WebElement we : refList) {
             if (we.getAttribute("href") != null && we.getAttribute("href").equals("https://www.selenium.dev/")) {
@@ -55,7 +60,10 @@ public class Asercje {
             Assert.assertTrue(driver.getTitle().equals(expectedTitle), "Tytuły nie są równe");
             //Assert.assertTrue(driver.getTitle().equals("Test"), "Tytuły nie są równe");
         }
+    }
 
+    @AfterTest
+    public void tearDown() {
         driver.quit();
     }
 }

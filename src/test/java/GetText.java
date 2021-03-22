@@ -5,17 +5,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-public class PobieranieTekstu {
+import java.io.File;
+
+public class GetText {
 
     @Test
     public void getText() {
-        String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
+        String driverPath = new File("src/main/resources/executables/drivers/chromedriver.exe").getAbsolutePath();
         System.setProperty("webdriver.chrome.driver", driverPath);
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        driver.get("C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\files\\Test.html");
+        driver.get(new File("src/main/resources/files/Test.html").getAbsolutePath());
 
         WebElement firstNameInput = driver.findElement(By.id("fname"));
         firstNameInput.sendKeys("Test");

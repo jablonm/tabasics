@@ -5,17 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class LokalizowanieElementow {
+import java.io.File;
+
+public class LocaliseElements {
 
     @Test
     public void elementLocalistation() {
-        String driverPath = "C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\executables\\drivers\\chromedriver.exe";
+        String driverPath = new File("src/main/resources/executables/drivers/chromedriver.exe").getAbsolutePath();
         System.setProperty("webdriver.chrome.driver",driverPath);
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        driver.get("C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\files\\Test.html");
+        driver.get(new File("src/main/resources/files/Test.html").getAbsolutePath());
         WebElement firstNameInput = driver.findElement(By.name("fname"));
         WebElement clickOnMeButton2 = ((ChromeDriver) driver).findElementById("clickOnMe");
         // metoda findElementById jest definiowana w odpowiednim driverze przeglądarki, dlatego należy użyć rzutownia
