@@ -4,13 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class HandlingFramesTest extends BaseSeleniumTest {
 
     @Test
     public void handlingFramesTest() {
-        driver.get("C:\\Users\\m.jablonski\\tabasics\\src\\main\\resources\\files\\iFrameTest.html");
+        driver.get(new File("src/main/resources/files/iFrameTest.html").getAbsolutePath());
         driver.switchTo().frame(0); //przepiecie miedzy ramkami
         WebElement clickOnMeButton = driver.findElement(By.id("clickOnMe"));
         clickOnMeButton.click();
