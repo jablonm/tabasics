@@ -1,7 +1,8 @@
 package com.travelers.helper;
 
-import com.travelers.helper.DriverFactory;
-import com.travelers.helper.SeleniumHelper;
+import com.travelers.exceptions.NoSuchDriverException;
+import com.travelers.utils.DriverFactory;
+import com.travelers.utils.DriverType;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
@@ -13,7 +14,7 @@ public class TestListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult iTestResult) {
         try {
             System.out.println("On test failure");
-            SeleniumHelper.takeScreenshot(DriverFactory.getDriver(DriverType.FIREFOX));
+            SeleniumHelper.takeScreenshot(DriverFactory.getDriver(DriverType.CHROME));
         } catch (IOException | NoSuchDriverException e) {
             e.printStackTrace();
         }

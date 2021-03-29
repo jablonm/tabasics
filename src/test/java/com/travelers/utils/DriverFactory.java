@@ -1,5 +1,6 @@
-package com.travelers.helper;
+package com.travelers.utils;
 
+import com.travelers.exceptions.NoSuchDriverException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -71,4 +72,7 @@ public class DriverFactory {
 
     }
 
+    public static void resetDriver() {
+        driverInstance = null;
+    }
 }

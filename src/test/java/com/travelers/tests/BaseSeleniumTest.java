@@ -1,31 +1,27 @@
 package com.travelers.tests;
 
-import com.travelers.helper.DriverFactory;
-import com.travelers.helper.DriverType;
-import com.travelers.helper.NoSuchDriverException;
+import com.travelers.utils.DriverFactory;
+import com.travelers.utils.DriverType;
+import com.travelers.exceptions.NoSuchDriverException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class BaseSeleniumTest {
 
     protected WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() throws IOException, NoSuchDriverException {
-        driver = DriverFactory.getDriver(DriverType.FIREFOX);
+        driver = DriverFactory.getDriver(DriverType.CHROME);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         driver.quit();
+        DriverFactory.resetDriver();
     }
 
 }
