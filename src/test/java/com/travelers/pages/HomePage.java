@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.apache.log4j.Logger;
 
 public class HomePage {
 
@@ -41,6 +42,8 @@ public class HomePage {
 
     final SeleniumHelper helper;
 
+    private Logger logger = Logger.getLogger(HomePage.class);
+
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.helper = new SeleniumHelper(driver);
@@ -48,6 +51,7 @@ public class HomePage {
     }
 
     public HomePage setCityHotel(String cityname) {
+        logger.info("Input city name " + cityname);
         searchSpan.click();
         searchCityInput.sendKeys(cityname);
 

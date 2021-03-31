@@ -29,7 +29,7 @@ public class DriverFactory {
 
         switch (driverType) {
             case IE:
-                File ieDriverPath = new File("src//main//resources//executables//drivers//iedriverserver.exe");
+                File ieDriverPath = new File("src//test//resources//executables//drivers//iedriverserver.exe");
                 InternetExplorerDriverService ieDriverService = new InternetExplorerDriverService.Builder()
                         .usingDriverExecutable(ieDriverPath)
                         .usingAnyFreePort()
@@ -39,7 +39,7 @@ public class DriverFactory {
                 driverInstance.manage().window().maximize();
             break;
             case CHROME:
-                File chromeDriverPath = new File("src//main//resources//executables//drivers//chromedriver.exe");
+                File chromeDriverPath = new File("src//test//resources//executables//drivers//chromedriver.exe");
                 ChromeDriverService chromeDriverService = new ChromeDriverService.Builder()
                         .usingDriverExecutable(chromeDriverPath)
                         .usingAnyFreePort()
@@ -57,7 +57,7 @@ public class DriverFactory {
                 driverInstance.manage().window().maximize();
             break;
             case FIREFOX:
-                File firefoxDriverPath = new File("src//main//resources//executables//drivers//geckodriver.exe");
+                File firefoxDriverPath = new File("src//test//resources//executables//drivers//geckodriver.exe");
                 GeckoDriverService firefoxDriverService = new GeckoDriverService.Builder()
                         .usingDriverExecutable(firefoxDriverPath)
                         .usingAnyFreePort()

@@ -8,9 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.function.Function;
 
 public class SeleniumHelper {
 
@@ -69,11 +69,18 @@ public class SeleniumHelper {
         });*/
     }
 
-    public static void takeScreenshot(WebDriver driver) throws IOException {
+    public static String takeScreenshot(WebDriver driver) throws IOException {
         TakesScreenshot takeScreenshot = (TakesScreenshot) driver;
         File screenshotFile = takeScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File("src/main/resources/screenshots/screenshot" + LocalTime.now().getNano() + ".png");
+        String fileName = "screenshot-" +
+                LocalDate.now() + "_" +
+                LocalTime.now().getHour() +
+                LocalTime.now().getMinute() +
+                LocalTime.now().getSecond() +
+                LocalTime.now().getNano() + ".png";
+        File destinationFile = new File("src/test/resources/reports/screenshots/" + fileName);
         Files.copy(screenshotFile.toPath(), destinationFile.toPath());
+        return "reports/screenshots/" + fileName;
     }
 
 }

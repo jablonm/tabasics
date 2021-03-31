@@ -1,6 +1,7 @@
 package com.travelers.pages;
 
 import com.travelers.helper.SeleniumHelper;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,9 @@ public class ResultPage {
     @FindBy(xpath = "//table[@class='bgwhite table table-striped']")
     private WebElement resultsTable;
 
-    private SeleniumHelper helper;
+    final SeleniumHelper helper;
+
+    Logger logger = Logger.getLogger(ResultPage.class);
 
     public ResultPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -33,7 +36,7 @@ public class ResultPage {
         for (WebElement hotelName : hotelNames) {
             //czekanie az dlugosc elementu bedzie wieksza od 0
             helper.waitForElementLength(hotelName);
-            System.out.println(hotelName.getText());
+            logger.info("City name " + hotelName.getText());
             hotelNamesList.add(hotelName.getText());
         }
         return hotelNamesList;
